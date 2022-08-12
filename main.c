@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	open_error(argv);
 	line = getline(&glob.buffer, &buffsize, glob.fp);
 	line_checker(line);
-	while (line >= 0)
+	while (line > 0)
 	{
 		count++;
 		opcode = glob.array;
@@ -47,11 +47,10 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		checker = get_opcode(opcode);
-		if (checker == 0)
+		if (checker == NULL)
 		{
 			unknown_opcode_error(count);
 			free_buffer(head);
-			free_stack(head);
 			exit(EXIT_FAILURE);
 		}
 		checker(&head, count);

@@ -21,9 +21,7 @@ void invalid_error(int argc)
  */
 void open_error(char **argv)
 {
-	globalvar_t *glob = NULL;
-
-	if (glob->fp == NULL)
+	if (glob.fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
@@ -37,12 +35,11 @@ void open_error(char **argv)
  */
 void line_checker(ssize_t line)
 {
-	globalvar_t *glob = NULL;
 
 	if (line < 0)
 	{
-		free(glob->buffer);
-		fclose(glob->fp);
+		free(glob.buffer);
+		fclose(glob.fp);
 		exit(0);
 	}
 }
@@ -54,9 +51,7 @@ void line_checker(ssize_t line)
  */
 void unknown_opcode_error(unsigned int line_number)
 {
-	globalvar_t *glob = NULL;
-
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, glob->array);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, glob.array);
 	exit(EXIT_FAILURE);
 }
 
