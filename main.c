@@ -34,10 +34,10 @@ int main(int argc, char *argv[])
 	invalid_error(argc);
 	glob.fp = fopen(argv[1], "r");
 	open_error(argv);
-	line = getline(&glob.buffer, &buffsize, glob.fp);
-	line_checker(line);
-	while (line > 0)
+	while (glob.fp != NULL)
 	{
+		line = getline(&glob.buffer, &buffsize, glob.fp);
+		line_checker(line);
 		count++;
 		opcode = glob.array;
 		opcode = tokenize(glob.buffer);

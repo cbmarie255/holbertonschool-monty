@@ -42,6 +42,7 @@ typedef struct instruction_s
  *@fp: pointer to the file to open
  *@buffer: holds the command for each line of input
  *@array: strings that hold the command
+ *@data: data
  *Description: to pass variables in all files in repo
  */
 typedef struct globalvar_s
@@ -49,6 +50,7 @@ typedef struct globalvar_s
 	FILE *fp;
 	char *buffer;
 	char *array;
+	int data;
 } globalvar_t;
 
 globalvar_t glob;
