@@ -42,7 +42,6 @@ typedef struct instruction_s
  *@fp: pointer to the file to open
  *@buffer: holds the command for each line of input
  *@array: strings that hold the command
- *@data: data inthe node
  *Description: to pass variables in all files in repo
  */
 typedef struct globalvar_s
@@ -69,7 +68,7 @@ void invalid_error(int argc);
 void open_error(char **argv);
 void line_checker(ssize_t line);
 void unknown_opcode_error(unsigned int line_number);
-void check_opcode (int checker, unsigned int line_number, stack_t *head);
+void check_opcode(int checker, unsigned int line_number, stack_t *head);
 void malloc_error(void);
 
 /*free*/

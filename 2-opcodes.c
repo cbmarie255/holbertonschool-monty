@@ -14,7 +14,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (topElement == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		free_stack(*stack);
+		free_buffer(*stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = topElement->next;

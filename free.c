@@ -26,7 +26,7 @@ void free_buffer(stack_t *head)
 {
 
 	free_stack(head);
-	if(glob.buffer != NULL)
+	if (glob.buffer != NULL)
 		free(glob.buffer);
 	if (glob.fp != NULL)
 		fclose(glob.fp);
