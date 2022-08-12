@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		checker = get_opcode(opcode);
-		if (checker == NULL)
+		if (checker == 0)
 		{
 			unknown_opcode_error(count);
 			free_buffer(head);
