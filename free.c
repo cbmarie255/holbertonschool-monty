@@ -19,12 +19,15 @@ void free_stack(stack_t *head)
 
 /**
  *free_buffer - will free the buffer and close the stream pointing to fp
+ *@head: pointer to the stack
  *Return: void, just freeing
  */
-void free_buffer(void)
+void free_buffer(stack_t *head)
 {
-	globalvar_t *glob = NULL;
 
-	free(glob->array);
-	fclose(glob->fp);
+	free_stack(head);
+	if(glob.buffer != NULL)
+		free(glob.buffer);
+	if (glob.fp != NULL)
+		fclose(glob.fp);
 }

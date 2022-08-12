@@ -50,8 +50,9 @@ typedef struct globalvar_s
 	FILE *fp;
 	char *buffer;
 	char *array;
-	int data;
 } globalvar_t;
+
+globalvar_t glob;
 
 /*opcodes*/
 void push(stack_t **stack, unsigned int line_number);
@@ -73,7 +74,7 @@ void malloc_error(void);
 
 /*free*/
 void free_stack(stack_t *head);
-void free_buffer(void);
+void free_buffer(stack_t *head);
 
 /*main functions*/
 char *tokenize(char *buffer);

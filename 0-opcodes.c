@@ -9,31 +9,34 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *topNode;
-	globalvar_t *glob = NULL;
 	int i;
 
-	topNode = malloc(sizeof(stack_t));
-	if (topNode == NULL)
+	if (glob.array == NULL)
 	{
-		free_buffer();
-		free_stack(*stack);
-		malloc_error();
-	}
-	for (i = 0; glob->array[i] != '\0'; i++)
-	{
-		if ((isdigit(glob->array[i]) == 0) && (glob->array[i] != '-'))
-		{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
+	}
+	for (i = 0; glob.array[i] != '\0'; i++)
+	{
+		if ((isdigit(glob.array[i]) == 0) && (glob.array[i] != '-'))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			free_stack(*stack);
+			exit(EXIT_FAILURE);
 		}
+	}
+	topNode = malloc(sizeof(stack_t));
+	if (topNode == NULL)
+	{
+		malloc_error();
 	}
 	if ((*stack) != NULL)
 		(*stack)->prev = topNode;
-	topNode->n = atoi(glob->array);
-	topNode->next = (*stack);
+	topNode->n = atoi(glob.array);
+	topNode->next = *stack;
 	topNode->prev = NULL;
-	(*stack) = topNode;
+	*stack = topNode;
 }
 
 /**
